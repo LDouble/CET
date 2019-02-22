@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> CET4/6 准考证找回—WeOUC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weui/1.1.2/style/weui.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-weui/1.2.0/css/jquery-weui.min.css" rel="stylesheet">
+    <style>
+
+        .title {
+            color: #425FEF;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #header {
+            text-align: center;
+            margin-top: 30px;
+            display: block
+        }
+
+        .body {
+            padding: 0 5px;
+        }
+
+        .weui-vcode-img {
+            height: 35px;
+        }
+
+        .weui-cell_select {
+            padding: 0px 15px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="header">
+    <div class="title">
+        <p class="">2018年12月英语四六级准考证号码找回</p>
+    </div>
+</div>
+<div class="body">
+    <div id="result" style="display: none;">
+        <div id="res_2"
+             style="width: 100%;margin: 0 auto;">
+            <div style="height: 20px"></div>
+            <div style="text-align: center;color:#C7C8CF;font-size: 11px;">
+                恭喜！已经成功找回你的准考证<br>
+                查询信息如下
+            </div>
+            <div style="width: 70%;margin:0 auto;margin-top: 15px;color:#657CED;font-family: SimHei;
+font-size: 15px;">
+                <div style="float: left">
+                    <p style="line-height: 30px;">姓&nbsp;&nbsp;名：</p>
+                    <p style="line-height: 30px;">类&nbsp;&nbsp;型：</p>
+                    <p style="line-height: 30px;">准考证号：</p>
+                </div>
+                <div style="float: left">
+                    <p style="line-height: 30px;letter-spacing: 4px" id="show_name">赵钱孙</p>
+                    <p style="line-height: 30px;letter-spacing: 4px" id="show_type">四级</p>
+                    <p style="line-height: 30px;" id="show_zkz">300000000000101</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="query" class="weui-cells weui-cells_form" style="margin-top:30px;display: block">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">姓&nbsp;&nbsp;&nbsp;名</label></div>
+            <div class="weui-cell__bd">
+                <input id="name" class="weui-input" type="text" placeholder="请输入姓名">
+            </div>
+        </div>
+        <div class="weui-cell" style="">
+            <div class="weui-cell__hd"><label class="weui-label">身份证</label></div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="text" placeholder="请输入身份证">
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__hd"><label class="weui-label">省 份</label></div>
+            <div class="weui-cell__bd">
+                <select class="weui-select" id="province" name="select1">
+                    <option value="51">四川省</option>
+                    <option value="11">北京市</option>
+                    <option value="12">天津市</option>
+                    <option value="13">河北省</option>
+                    <option value="22">吉林省</option>
+                    <option value="31">上海市</option>
+                    <option value="34">安徽省</option>
+                    <option value="35">福建省</option>
+                    <option selected="" value="37">山东省</option>
+                    <option value="41">河南省</option>
+                    <option value="42">湖北省</option>
+                    <option value="44">广东省</option>
+                    <option value="45">广西壮族自治区</option>
+                    <option value="46">海南省</option>
+                    <option value="50">重庆市</option>
+                    <option value="53">云南省</option>
+                    <option value="62">甘肃省</option>
+                    <option value="63">青海省</option>
+                    <option value="82">澳门</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="code" type="text" placeholder="请输入验证码">
+                <input class="weui-input" id="cookie" type="text" hidden>
+            </div>
+            <div class="weui-cell__ft">
+                <img onclick="reload()" class="weui-vcode-img" src="">
+            </div>
+        </div>
+
+        <div style="height:30px;"></div>
+        <a id="query_btn" onclick="query()" href="javascript:;"
+           class="weui-btn weui-btn_primary">查&nbsp;&nbsp;&nbsp;询</a>
+        <div style="height:10px;"></div>
+
+        <div class="line" style="height: 1.5px"></div>
+        <div style="height:10px;"></div>
+        <p style="color: #b6b6b6;text-align: center;font-size: 12px">信息仅作查询使用，且不会记录个人隐私信息。</p>
+    </div>
+    <br>
+</div>
+
+<div class="bottom" style="margin-top: 10px;margin-bottom:5px;text-align:center">
+    <img style="width:50%;height: auto;margin: 0 auto" src="https://s2.ax1x.com/2019/02/22/kWzNu9.jpg"/>
+    <div style="text-align: center;color:#C7C8CF;font-size: 11px;">
+        欢迎关注WeOUC，了解更多信息
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+
+<script>
+
+    function query() {
+        var name = $("#name").val();
+        var number = $("#number").val();
+        var code = $("#code").val();
+        var province = $("#province").val();
+
+        if (!name) {
+            $.toast("请输入姓名", "cancel", function (toast) {
+            }, 100);
+            return;
+        }
+        if (!number) {
+            $.toast("请输入身份证", "cancel", function (toast) {
+            }, 100);
+            return;
+        }
+        if (!code) {
+            $.toast("请输入验证码", "cancel", function (toast) {
+            }, 100);
+            return;
+        }
+
+        $("#query_btn").text("正在查询...");
+        //$.showLoading();
+        $.ajax({
+            type: "POST",
+            url: "/query",
+            data: {
+                province: province,
+                number: number,
+                code: code,
+                name: name,
+                cookie: $("#cookie").val()
+            },
+            datatype: "JSON",
+            success: function (data) {
+
+                $("#query_btn").text("查 询");
+                if (data.ExceuteResultType != '-1') {
+                    $.hideLoading();
+                    console.log(data.data.name);
+                    $("#show_name").text(data.data.name);
+                    $("#show_zkz").text(data.data.code);
+                    var type = data.data.code.split('');
+                    if (type[9] == 1) {
+                        $("#show_type").text("四级");
+                    } else {
+                        $("#show_type").text("六级");
+                    }
+                    $("#query").hide();
+                    $("#result").show();
+                    $("#top").hide();
+                } else {
+                    $.hideLoading();
+                    $.toast(data.Message, "cancel", function (toast) {
+                        console.log(toast);
+                    });
+                }
+            }
+        })
+    }
+
+    function reload() {
+        getcode()
+    }
+
+    function getcode() {
+        $.get("/code", function (result) {
+            $(".weui-vcode-img").attr('src', result.data);
+            console.log(result.data)
+            $("#code").val("");
+            $("#cookie").val(result.cookie);
+        });
+    }
+
+    function onBridgeReady() {
+        WeixinJSBridge.call('hideOptionMenu');
+    }
+
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        } else if (document.attachEvent) {
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    } else {
+        onBridgeReady();
+    }
+    getcode()
+</script>
+</body>
+</html>
