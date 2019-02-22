@@ -11,6 +11,7 @@ from pdfminer.layout import LAParams
 from io import StringIO
 from io import open
 import json
+import os
 
 
 def readPDF(pdfFile):
@@ -52,6 +53,7 @@ def un_zip(file_name):
     for names in zip_file.namelist():
         file = (zip_file.extract(names, "./data/"))
     zip_file.close()
+    os.remove(file_name) # 删除文件，本地不进行保存
     return file
 
 
@@ -80,6 +82,7 @@ def _query(province, code, name, number, cookie):
                 file = down(sid[0])
                 file = un_zip(file)
                 text = readPDF(file)
+                os.remove(file) 删除文件，不进行留存
                 code = getcode(text)
                 if code.get("code"):
                     data = code
