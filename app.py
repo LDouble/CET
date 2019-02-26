@@ -82,7 +82,7 @@ def _query(province, code, name, number, cookie):
                 file = down(sid[0])
                 file = un_zip(file)
                 text = readPDF(file)
-                os.remove(file) 删除文件，不进行留存
+                os.remove(file) # 删除文件，不进行留存
                 code = getcode(text)
                 if code.get("code"):
                     data = code
